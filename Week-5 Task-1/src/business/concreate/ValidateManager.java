@@ -4,24 +4,29 @@ import business.abstracts.Validator;
 import dataAccess.abstracts.UserDao;
 import entities.concreate.User;
 
-public class ValidateService implements Validator {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ValidateManager implements Validator {
 
     UserDao userDao;
 
-    public ValidateService(UserDao userDao) {
+    public ValidateManager(UserDao userDao) {
         this.userDao = userDao;
     }
 
     @Override
     public boolean isEMailValid(User user) {
-
+        final Pattern VALID_EMAIL_ADDRESS_REGEX =
+                Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
         if(userDao.getByEmail(user.getE_mail())!=null){
             System.out.println("E posta kullanımda!");
             return true;
         }
 
-        if(user.getE_mail().contains("@")){
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(user.getE_mail());
+        if(matcher.find()){
             return true;
         }
         System.out.println("Geçersiz E-Posta Adresi!");

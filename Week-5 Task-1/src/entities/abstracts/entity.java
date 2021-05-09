@@ -1,2 +1,4 @@
-package entities.abstracts;public interface entity {
+package entities.abstracts;
+
+public interface entity {
 }

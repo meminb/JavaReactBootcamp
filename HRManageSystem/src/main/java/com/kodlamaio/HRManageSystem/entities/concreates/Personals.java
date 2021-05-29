@@ -10,9 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Data
 @Entity
-@Table(name = "personals")
+@Table(name = "personels")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Personals extends Users{

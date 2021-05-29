@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-
 @MappedSuperclass
 @Table(name = "users")
 @AllArgsConstructor

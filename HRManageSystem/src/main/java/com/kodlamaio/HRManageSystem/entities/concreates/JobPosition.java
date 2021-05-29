@@ -1,11 +1,15 @@
 package com.kodlamaio.HRManageSystem.entities.concreates;
 
 import com.kodlamaio.HRManageSystem.entities.abstracts.Entities;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name ="jobpositions")
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobPosition implements Entities {
     @Id
     @GeneratedValue
@@ -15,12 +19,6 @@ public class JobPosition implements Entities {
 
     @Column(name = "job_name")
     private String productName;
-
-    public JobPosition(){}
-    public JobPosition(int id, String productName) {
-        this.id = id;
-        this.productName = productName;
-    }
 
     public int getId() {
         return id;

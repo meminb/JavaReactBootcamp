@@ -1,4 +1,4 @@
-package com.kodlamaio.HRManageSystem.entities.concreates;
+package com.kodlamaio.HRManageSystem.entities.abstracts;
 
 
 import lombok.AllArgsConstructor;
@@ -10,9 +10,7 @@ import javax.persistence.*;
 @Data
 @MappedSuperclass
 @Table(name = "users")
-@AllArgsConstructor
-@NoArgsConstructor
-public class Users {
+public abstract class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")

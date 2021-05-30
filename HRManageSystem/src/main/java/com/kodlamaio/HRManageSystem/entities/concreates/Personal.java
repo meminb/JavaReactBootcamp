@@ -1,9 +1,8 @@
 package com.kodlamaio.HRManageSystem.entities.concreates;
 
+import com.kodlamaio.HRManageSystem.entities.abstracts.User;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.exception.DataException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +13,7 @@ import java.util.Date;
 @Table(name = "personels")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Personals extends Users{
+public class Personal extends User {
 
 
     @Column(name = "startdate")

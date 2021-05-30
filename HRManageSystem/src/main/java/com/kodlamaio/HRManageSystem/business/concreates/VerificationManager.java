@@ -1,13 +1,14 @@
 package com.kodlamaio.HRManageSystem.business.concreates;
 
-import com.kodlamaio.HRManageSystem.business.abstracts.PersonalService;
+import com.kodlamaio.HRManageSystem.business.abstracts.VerificationService;
 import com.kodlamaio.HRManageSystem.core.utilities.result.DataResult;
 import com.kodlamaio.HRManageSystem.core.utilities.result.Result;
 import com.kodlamaio.HRManageSystem.core.utilities.result.SuccessDataResult;
 import com.kodlamaio.HRManageSystem.core.utilities.result.SuccessResult;
 import com.kodlamaio.HRManageSystem.dataAccess.abstracts.PersonalDao;
-import com.kodlamaio.HRManageSystem.entities.abstracts.Entities;
+import com.kodlamaio.HRManageSystem.dataAccess.abstracts.VerificationDao;
 import com.kodlamaio.HRManageSystem.entities.concreates.Personal;
+import com.kodlamaio.HRManageSystem.entities.concreates.Verification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
@@ -18,25 +19,26 @@ import java.util.List;
 @Component
 @Service
 @SpringBootApplication
-public class PersonalManager implements PersonalService {
+public class VerificationManager implements VerificationService {
 
-    private PersonalDao personalDao;
+
+    VerificationDao verificationDao;
 
     @Autowired
-    public PersonalManager(PersonalDao personalDao){
-        this.personalDao=personalDao;
-    }
-
-    @Override
-    public DataResult<List<Personal>> getAll() {
-        return new SuccessDataResult<List<Personal>>(
-                this.personalDao.findAll(),"Personals Listed");
+    public VerificationManager(VerificationDao verificationDao){
+        this.verificationDao=verificationDao;
     }
 
 
+
     @Override
-    public Result add(Personal personal) {
-        this.personalDao.save(personal);
-        return new SuccessResult("Personal added");
+    public DataResult<List<Verification>> getAll() {
+        return new SuccessDataResult<List<Personal>>(this.verificationDao.findAll(),"Verifications Listed");
+    }
+
+    @Override
+    public Result add(Verification verification) {
+        this.verificationDao.save(verification);
+        return new SuccessResult(verification.getVerificationType()+" Verified");
     }
 }

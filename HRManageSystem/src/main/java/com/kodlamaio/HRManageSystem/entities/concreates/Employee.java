@@ -1,7 +1,6 @@
 package com.kodlamaio.HRManageSystem.entities.concreates;
 
 
-import com.kodlamaio.HRManageSystem.entities.abstracts.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +28,8 @@ public class Employee extends User {
     @Column(name = "birthdate")
     private String date;
 
-    @Column(name = "mernis_ver_id")
-    private int mernisId;
+    @Column(name = "mernis",nullable = true)
+    private Boolean mernis;
 
 
 }

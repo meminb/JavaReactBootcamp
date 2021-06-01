@@ -14,6 +14,7 @@ import java.util.List;
 public class JobPositionController {
 
     private JobPositionService jobPositionService;
+
     @Autowired
     public JobPositionController(JobPositionService jobPositionService) {
         this.jobPositionService = jobPositionService;
@@ -28,6 +29,7 @@ public class JobPositionController {
 
     @PostMapping("/add")
     public Result add(@RequestBody JobPosition product){
+
         return this.jobPositionService.add(product);
     }
 

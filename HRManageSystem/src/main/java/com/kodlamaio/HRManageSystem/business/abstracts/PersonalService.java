@@ -2,8 +2,6 @@ package com.kodlamaio.HRManageSystem.business.abstracts;
 
 import com.kodlamaio.HRManageSystem.core.utilities.result.DataResult;
 import com.kodlamaio.HRManageSystem.core.utilities.result.Result;
-import com.kodlamaio.HRManageSystem.entities.abstracts.Entities;
-import com.kodlamaio.HRManageSystem.entities.abstracts.User;
 import com.kodlamaio.HRManageSystem.entities.concreates.Personal;
 
 import java.util.List;

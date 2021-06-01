@@ -1,10 +1,11 @@
 package com.kodlamaio.HRManageSystem.business.concreates;
 
 import com.kodlamaio.HRManageSystem.business.abstracts.EmployerServices;
-import com.kodlamaio.HRManageSystem.core.utilities.result.DataResult;
-import com.kodlamaio.HRManageSystem.core.utilities.result.Result;
-import com.kodlamaio.HRManageSystem.core.utilities.result.SuccessDataResult;
+import com.kodlamaio.HRManageSystem.core.utilities.result.*;
+import com.kodlamaio.HRManageSystem.core.validation.abstracts.EmployerValidationService;
+import com.kodlamaio.HRManageSystem.core.validation.concreate.EmployerValidationManager;
 import com.kodlamaio.HRManageSystem.dataAccess.abstracts.EmployerDao;
+import com.kodlamaio.HRManageSystem.dataAccess.abstracts.UserDao;
 import com.kodlamaio.HRManageSystem.entities.concreates.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,13 +19,12 @@ import java.util.List;
 @SpringBootApplication
 public class EmployerManager implements EmployerServices {
 
+    EmployerValidationService employerValidationService;
     EmployerDao employerDao;
-
-
     @Autowired
-    public EmployerManager(EmployerDao employerDao){
+    public EmployerManager(EmployerDao employerDao, UserDao userDao){
         this.employerDao=employerDao;
-
+        this.employerValidationService=new EmployerValidationManager(userDao,employerDao);
 
     }
 
@@ -36,6 +36,16 @@ public class EmployerManager implements EmployerServices {
 
     @Override
     public Result add(Employer employer) {
-        return null;
+        if(!employerValidationService.isAllFieldFilled(employer)){
+            return new ErrorResult("You need to fill all the fields");
+        }else if (employerValidationService.isEmailUnique(employer.getEmail())){
+            return new ErrorResult("Email already used");
+        }else if(employerValidationService.isValidatedByPersonal(employer)){
+            System.out.println("Need to validate");
+        }
+
+
+        this.employerDao.save(employer);
+        return new SuccessResult("Employer added");
     }
 }

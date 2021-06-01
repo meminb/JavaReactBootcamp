@@ -33,7 +33,6 @@ public class PersonalManager implements PersonalService {
                 this.personalDao.findAll(),"Personals Listed");
     }
 
-
     @Override
     public Result add(Personal personal) {
         this.personalDao.save(personal);

@@ -1,10 +1,9 @@
 package com.kodlamaio.HRManageSystem.business.concreates;
 
 import com.kodlamaio.HRManageSystem.business.abstracts.JobPositionService;
-import com.kodlamaio.HRManageSystem.core.utilities.result.DataResult;
-import com.kodlamaio.HRManageSystem.core.utilities.result.Result;
-import com.kodlamaio.HRManageSystem.core.utilities.result.SuccessDataResult;
-import com.kodlamaio.HRManageSystem.core.utilities.result.SuccessResult;
+import com.kodlamaio.HRManageSystem.core.utilities.result.*;
+import com.kodlamaio.HRManageSystem.core.validation.abstracts.JobPositionValidationService;
+import com.kodlamaio.HRManageSystem.core.validation.concreate.JobPositionValidationManager;
 import com.kodlamaio.HRManageSystem.dataAccess.abstracts.JobPositionDao;
 import com.kodlamaio.HRManageSystem.entities.concreates.JobPosition;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,11 @@ import java.util.List;
 @SpringBootApplication
 public class JobPositionManager implements JobPositionService {
     private JobPositionDao jobPositionDao;
+    private JobPositionValidationService jobPositionValidationService;
 
     @Autowired
     public JobPositionManager(JobPositionDao jobPositionDao) {
+        this.jobPositionValidationService=new JobPositionValidationManager(jobPositionDao);
         this.jobPositionDao = jobPositionDao;
     }
 
@@ -33,6 +34,10 @@ public class JobPositionManager implements JobPositionService {
 
     @Override
     public Result add(JobPosition jobPosition) {
+        if(!jobPositionValidationService.isPositionUnique(jobPosition)){
+            return new ErrorResult("Position already exist");
+        }
+
         this.jobPositionDao.save(jobPosition);
         return new SuccessResult("Job Position added");
 

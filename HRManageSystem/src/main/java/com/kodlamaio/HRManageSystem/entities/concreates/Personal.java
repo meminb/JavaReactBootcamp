@@ -1,6 +1,5 @@
 package com.kodlamaio.HRManageSystem.entities.concreates;
 
-import com.kodlamaio.HRManageSystem.entities.abstracts.User;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 

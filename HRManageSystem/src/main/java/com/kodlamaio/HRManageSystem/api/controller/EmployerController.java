@@ -1,7 +1,6 @@
 package com.kodlamaio.HRManageSystem.api.controller;
 
 import com.kodlamaio.HRManageSystem.business.abstracts.EmployerServices;
-import com.kodlamaio.HRManageSystem.business.abstracts.VerificationService;
 import com.kodlamaio.HRManageSystem.core.utilities.result.DataResult;
 import com.kodlamaio.HRManageSystem.core.utilities.result.Result;
 import com.kodlamaio.HRManageSystem.entities.concreates.Employer;
@@ -16,11 +15,9 @@ import java.util.List;
 public class EmployerController {
 
     EmployerServices employerServices;
-
     @Autowired
-    public  EmployerController(EmployerServices employerServices){
-        this.employerServices=employerServices;
-
+    public EmployerController(EmployerServices employerServices) {
+        this.employerServices = employerServices;
     }
 
 
@@ -33,5 +30,10 @@ public class EmployerController {
     public Result add(@RequestBody Employer employer){
         return this.employerServices.add(employer);
     }
+/*
+    @PostMapping("/verify")
+    public Result verify(@RequestBody Employer employer){
+        Return
+    }*/
 
 }

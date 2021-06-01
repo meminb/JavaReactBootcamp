@@ -25,6 +25,6 @@ public class Verification {
     @Column(name = "verification_type")
     private String verificationType;
 
-    @Column(name = "verificated_user")
+    @Column(name = "verified_user")
     private int veriffiedUser;
 }

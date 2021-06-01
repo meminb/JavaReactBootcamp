@@ -2,11 +2,12 @@ package com.kodlamaio.HRManageSystem.business.abstracts;
 
 import com.kodlamaio.HRManageSystem.core.utilities.result.DataResult;
 import com.kodlamaio.HRManageSystem.core.utilities.result.Result;
-import com.kodlamaio.HRManageSystem.entities.concreates.JobPosition;
+import com.kodlamaio.HRManageSystem.entities.concreates.Verification;
 
 import java.util.List;
 
-public interface JobPositionService {
-    DataResult<List<JobPosition>>getAll();
-    Result add(JobPosition jobPosition);
+public interface VerificationService {
+    DataResult<List<Verification>> getAll();
+    Result add(Verification verification);
+
 }

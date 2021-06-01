@@ -8,12 +8,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-
 @MappedSuperclass
 @Table(name = "users")
-@AllArgsConstructor
-@NoArgsConstructor
-public class Users {
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")

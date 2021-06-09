@@ -50,7 +50,7 @@ public class EmployerValidationManager implements EmployerValidationService {
 
     @Override
     public boolean isValidatedByPersonal(Employer employer) {
-        return employer.getVerifiedBy()>0;
+        return true;
     }
 
 

@@ -35,6 +35,15 @@ insert into public.employers(email,user_password,company,website,phone)
 values('trendyol@hotmail.com','123456','trendyol','trendyol.com','5554302021');
 insert into public.employers(email,user_password,company,website,phone)
 values('hepsiburada@hotmail.com','123456','hepsiburada','hepsiburada.com','5554302023');
+SELECT * FROM public.employers
+
+
+INSERT INTO public.job_posts(
+	 description, max_salary, min_salary, post_date, last_day, free_positions, company_id, city_id, job_position_id)
+	VALUES ('Looking for data scientist', 
+			10000, 8000, '2021-02-20', '2021-02-21',  2, 8, 3, 2);
+
+SELECT * FROM public.job_posts
 
 
 
@@ -45,7 +54,7 @@ SELECT * FROM public.personels
 ORDER BY job_id ASC 
 
 SELECT * FROM public.employees
-SELECT * FROM public.employers
+
 
 SELECT * FROM public.users
 SELECT * FROM public.verifications

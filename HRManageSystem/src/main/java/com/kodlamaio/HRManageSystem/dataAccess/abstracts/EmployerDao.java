@@ -5,4 +5,8 @@ import com.kodlamaio.HRManageSystem.entities.concreates.Personal;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployerDao extends JpaRepository<Employer,Integer> {
+    Employer getByUserId(int userId);
+    Employer getByCompany(String company);
+
+
 }

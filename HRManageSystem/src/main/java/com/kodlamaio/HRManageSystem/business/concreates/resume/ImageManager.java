@@ -42,11 +42,15 @@ public class ImageManager implements ImageService {
 
 
     @Override
-    public Result add(int resumeId,String path) throws IOException {
+    public Result add(int resumeId,String path) throws IOException {// path mean is location of your image you wanted to upload
 
         Resume resume=resumeDao.getOne(resumeId);
         File file= (new File(path));
-        String link=fileService.upload(file);
+
+
+        String link=fileService.upload(file);// uploading image to cloudinary
+        // if you get errors about fileservice which implemented by CLOUDINARY you should check my pom.xml dependency
+        // and "core/utilities/image" system
 
         Image image=new Image(0,link,resume);
 

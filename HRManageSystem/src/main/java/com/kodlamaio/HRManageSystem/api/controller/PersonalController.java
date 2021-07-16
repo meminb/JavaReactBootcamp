@@ -5,6 +5,7 @@ import com.kodlamaio.HRManageSystem.core.utilities.result.DataResult;
 import com.kodlamaio.HRManageSystem.core.utilities.result.Result;
 import com.kodlamaio.HRManageSystem.entities.abstracts.Entities;
 import com.kodlamaio.HRManageSystem.entities.concreates.Personal;
+import com.kodlamaio.HRManageSystem.entities.concreates.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,15 @@ public class PersonalController {
         return this.personalService.add(person);
     }
 
+/**/
+    @GetMapping("/{id}")
+    public Personal getDemoEntity(@PathVariable("id") int id) {
 
-}
+        List<Personal> list=this.personalService.getAll().getData();
+
+        return list.get(id);
+    }
+
+    }
+
+

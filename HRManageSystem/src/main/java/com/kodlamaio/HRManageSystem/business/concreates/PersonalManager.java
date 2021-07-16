@@ -6,7 +6,6 @@ import com.kodlamaio.HRManageSystem.core.utilities.result.Result;
 import com.kodlamaio.HRManageSystem.core.utilities.result.SuccessDataResult;
 import com.kodlamaio.HRManageSystem.core.utilities.result.SuccessResult;
 import com.kodlamaio.HRManageSystem.dataAccess.abstracts.PersonalDao;
-import com.kodlamaio.HRManageSystem.entities.abstracts.Entities;
 import com.kodlamaio.HRManageSystem.entities.concreates.Personal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -38,4 +37,5 @@ public class PersonalManager implements PersonalService {
         this.personalDao.save(personal);
         return new SuccessResult("Personal added");
     }
+
 }
